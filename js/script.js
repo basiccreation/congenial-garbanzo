@@ -16,11 +16,11 @@ function loadData() {
     var cityInput = $("#city").val();
     var gkey = "AIzaSyBEZIIjRbO6D1Z5rUndEO2aD29JBoM5B2w";
     var beginningStreetUrl = "http://maps.googleapis.com/maps/api/streetview?size=600x300&location=";
-    var picUrl = '"' + beginningStreetUrl + streetInput + "," + cityInput + "&" + gkey + '"';
+    var picUrl = beginningStreetUrl + streetInput + "," + cityInput + "&" + gkey;
     $("#street").val('');
     $("#city").val('');
     //$( "h1" ).text( picUrl );
-    $body.append('<img class="bgimg" src= picUrl >');
+    $body.append('<img class="bgimg" src="' + picUrl + '">');
 
     return false;
 };
