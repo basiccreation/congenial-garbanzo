@@ -11,7 +11,7 @@ function loadData() {
     $wikiElem.text("");
     $nytElem.text("");
 
-    // load streetview
+    // load streetview image
     var streetInput = $("#street").val();
     var cityInput = $("#city").val();
     var gkey = "AIzaSyBEZIIjRbO6D1Z5rUndEO2aD29JBoM5B2w";
