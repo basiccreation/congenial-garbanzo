@@ -20,7 +20,7 @@ function loadData() {
     $body.append("<img class='bgimg' src='" + picUrl + "'>");
 
 
-    // load New York Times articles
+    // Load New York Times articles
     var nytkey = "74e83c0fbef64668ab64f1bd10492c4e";
     var nytSearchTerm = (cityInput).replace(" ", "+");
     var nytUrl = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + nytSearchTerm + "&sort=newest&&api-key=" + nytkey;
@@ -36,7 +36,22 @@ function loadData() {
         //$("#details").html(JSON.stringify(articles, null, 4));
     }).error(function(e) {
         $nytHeaderElem.text("Apologies, no New York Times Articles could not be found at this time");
-     }, "jsonp");
+     });
+    //Load Wikipedia articles
+      var wikiSearchTerm = cityInput;
+      var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=' + wikiSearchTerm.replace(" ", "%20");
+
+      $.ajax({
+            url: wikiUrl,
+            dataType: "jsonp",
+            success: function(response) {
+            var wikiList = response[1];
+            $("#details").html(JSON.stringify(response, null, 4));
+
+            }
+
+        });
+
 
     //dont touch anything below --------------------
     $("#street").val("");
