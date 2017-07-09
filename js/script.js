@@ -26,20 +26,21 @@ function loadData() {
     var nytUrl = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + nytSearchTerm + "&sort=newest&&api-key=" + nytkey;
 
     $.getJSON(nytUrl, function(data) {
-    $nytHeaderElem.text("New York Times Articles About " + cityInput);
-    var articles = data.response.docs;
-    var article;
-    for (var i = 0 ; i <articles.length ; i++) {
-        article = articles[i];
-        $nytElem.append("<li class='article'>" + "<a href='" + article.web_url + "'>"+ article.headline.main +"</a>" + "</li>");
-    }
+        $nytHeaderElem.text("New York Times Articles About " + cityInput);
+        var articles = data.response.docs;
+        var article;
+        for (var i = 0; i < articles.length; i++) {
+            article = articles[i];
+            $nytElem.append("<li class='article'>" + "<a href='" + article.web_url + "'>" + article.headline.main + "</a>" + "<p>" + article.snippet + "</p>" + "</li>");
+        };
+        //$("#details").html(JSON.stringify(articles, null, 4));
+    }).error(function(e) {
+        $nytHeaderElem.text("Apologies, New York TImes Articles could not be found at this time");
+    });
+    //dont touch anything below --------------------
+    $("#street").val("");
+    $("#city").val("");
 
-//---------------------------------------------
-$("#street").val("");
-$("#city").val("");
-$("#details").html(JSON.stringify(articles, null, 4));
-});
-//dont touch anything below --------------------
     return false;
 };
 $("#form-container").submit(loadData);
