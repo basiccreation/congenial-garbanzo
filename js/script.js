@@ -39,13 +39,19 @@ function loadData() {
      });
     //Load Wikipedia articles
       var wikiSearchTerm = cityInput;
-      var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=' + wikiSearchTerm.replace(" ", "%20");
+      var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=wikiCallback&format=json&search=' + wikiSearchTerm.replace(" ", "%20") + "'";
 
       $.ajax({
             url: wikiUrl,
             dataType: "jsonp",
             success: function(response) {
             var wikiList = response[1];
+            var wikiArticle;
+            for (var i = 0 ; i < wikiList.length ; i++) {
+                wikiArticle = wikiList[i];
+                var url = "http://en.wikipedia.org/wiki/" + wikiArticle;
+                $wikiElem.append("<li class='article'><a href='"+ url + "'>"+ wikiArticle +"</a>");
+            };
             $("#details").html(JSON.stringify(response, null, 4));
 
             }
