@@ -36,7 +36,8 @@ function loadData() {
         //$("#details").html(JSON.stringify(articles, null, 4));
     }).error(function(e) {
         $nytHeaderElem.text("Apologies, New York TImes Articles could not be found at this time");
-    });
+     }, "jsonp");
+
     //dont touch anything below --------------------
     $("#street").val("");
     $("#city").val("");
