@@ -36,25 +36,25 @@ function loadData() {
         //$("#details").html(JSON.stringify(articles, null, 4));
     }).error(function(e) {
         $nytHeaderElem.text("Apologies, no New York Times Articles could not be found at this time");
-     });
+    });
     //Load Wikipedia articles
-      var wikiSearchTerm = cityInput;
-      var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=wikiCallback&format=json&search=' + wikiSearchTerm.replace(" ", "%20") + "'";
+    var wikiSearchTerm = cityInput;
+    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=wikiCallback&format=json&search=' + wikiSearchTerm.replace(" ", "%20") + "'";
 
-      $.ajax({
-            url: wikiUrl,
-            dataType: "jsonp",
-            success: function(response) {
+    $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+        success: function(response) {
             var wikiList = response[1];
             var wikiArticle;
-            for (var i = 0 ; i < wikiList.length ; i++) {
+            for (var i = 0; i < wikiList.length; i++) {
                 wikiArticle = wikiList[i];
                 var url = "http://en.wikipedia.org/wiki/" + wikiArticle;
-                $wikiElem.append("<li class='article'><a href='"+ url + "'>"+ wikiArticle +"</a>");
+                $wikiElem.append("<li class='article'><a href='" + url + "'>" + wikiArticle + "</a>");
             };
-//           $("#details").html(JSON.stringify(response, null, 4));
-            }
-        });
+            //           $("#details").html(JSON.stringify(response, null, 4));
+        }
+    });
 
     //dont touch anything below --------------------
     $("#street").val("");
