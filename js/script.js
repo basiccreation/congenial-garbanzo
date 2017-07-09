@@ -34,8 +34,8 @@ function loadData() {
             $nytElem.append("<li class='article'>" + "<a href='" + article.web_url + "'>" + article.headline.main + "</a>" + "<p>" + article.snippet + "</p>" + "</li>");
         };
         //$("#details").html(JSON.stringify(articles, null, 4));
-    }).error(function(e) {
-        $nytHeaderElem.text("Apologies, no New York Times Articles could not be found at this time");
+ //   }).error(function(e) {
+ //       $nytHeaderElem.text("Apologies, no New York Times Articles could not be found at this time");
      });
     //Load Wikipedia articles
       var wikiSearchTerm = cityInput;
@@ -52,7 +52,7 @@ function loadData() {
                 var url = "http://en.wikipedia.org/wiki/" + wikiArticle;
                 $wikiElem.append("<li class='article'><a href='"+ url + "'>"+ wikiArticle +"</a>");
             };
-            $("#details").html(JSON.stringify(response, null, 4));
+ //           $("#details").html(JSON.stringify(response, null, 4));
 
             }
 
