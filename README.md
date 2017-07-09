@@ -4,6 +4,7 @@ One stop info hub to get to know new neighborhood before moving
 
 ##Features
 - shows street view image of address looked up
+- shows list of articles from the New York Times about the city looked up
 
 ## Getting Started
 
