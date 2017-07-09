@@ -14,7 +14,7 @@ function loadData() {
     var streetInput = $("#street").val();
     var cityInput = $("#city").val();
     var gkey = "74e83c0fbef64668ab64f1bd10492c4e";
-    var beginningStreetUrl = "http://maps.googleapis.com/maps/api/streetview?size=600x300&location=";
+    var beginningStreetUrl = "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=";
     var picUrl = beginningStreetUrl + streetInput + "," + cityInput + "&" + gkey;
 
     $body.append("<img class='bgimg' src='" + picUrl + "'>");
@@ -23,7 +23,7 @@ function loadData() {
     // load New York Times articles
     var nytkey = "74e83c0fbef64668ab64f1bd10492c4e";
     var nytSearchTerm = (cityInput).replace(" ", "+");
-    var nytUrl = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + nytSearchTerm + "&sort=newest&&api-key=" + nytkey;
+    var nytUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + nytSearchTerm + "&sort=newest&&api-key=" + nytkey;
 
     $.getJSON(nytUrl, function(data) {
     var response = data.response.docs;
